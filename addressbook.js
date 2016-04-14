@@ -39,7 +39,7 @@ function Email(address, type) {
 
 var person1 = new Person("James", "Blunt");
 person1.addEmail("one", "two");
-person1.emails;
+console.log(person1.emails);
 
 // I used the explicit "var prof = {}; prof.name = name" constructor we learned today over the "this.name = name" constructor because
 // the explicit style gives more flexibility. ie none of the functions within my objects would work if they had to depend on "this".
