@@ -8,34 +8,30 @@
   The `addEmail` function should take an email address and type as arguments, call the `Email` constructor to create a new email object, then *`push`* that email object to the `emails` of the person.
   * Finally test your code by creating a person and giving them a home and work email.*/
 
-function Person(firstName, lastName) {    
-    var person = {};
-    person.firstName = firstName;
-    person.lastName = lastName;
-    person.emails = [];
-    person.addEmail = function(type, address){
-        person.emails.push(new Email(type, address))
-        }
-    return person
+function Person(firstName, lastName) {
+     this.firstname = firstName;
+     this.lastname = lastName;
+     this.emails = [];
+}
+  
+function Email(address, type) {
+    this.address = address;
+    if (type === "work") {
+         this.type = "work";
+    }
+    if (type === "home") {
+         this.type = "home";
+    }
+    else {
+         this.type = "other";
+    }
 }
 
-function Email(address, type) {
-    var email = {};
-    
-    var list = ["work", "home", "other"];
-    email.address = address;
-    
-    list.forEach(function(each) {
-        if (each === type){
-            email.type = type;
-        }
-        else {
-            email.type = "other";
-        }
-    });
-    
-    return email;
-}
+Person.prototype = {
+    addEmail: function(address, type) {
+        this.emails.push(new Email(address, type));
+    }
+};
 
 var person1 = new Person("James", "Blunt");
 person1.addEmail("one", "two");
